@@ -1,11 +1,18 @@
 patient = {
 	ailments={skin=nil, sweating=1, bloodshot=1, sunken=1, welts=0, spots=1},
-	skin={k=nil, r=nil, g=nil, b=nil},
-	shirt={r=nil, g=nil, b=nil},
-	hair={r=nil, g=nil, b=nil},
-	eyes={r=nil, g=nil, b=nil},
-	pants={r=nil, g=nil, b=nil},
-	shoes={r=nil, g=nil, b=nil}
+	skin={k=nil, r=nil, g=nil, b=nil, img=love.graphics.newImage("assets/character/skin.png")},
+	shirt={r=nil, g=nil, b=nil, img=love.graphics.newImage("assets/character/shirt.png")},
+	hair={r=nil, g=nil, b=nil, img=love.graphics.newImage("assets/character/hair.png")},
+	eyes={r=nil, g=nil, b=nil, img=love.graphics.newImage("assets/character/eyes.png")},
+	pants={r=nil, g=nil, b=nil, img=love.graphics.newImage("assets/character/pants.png")},
+	shoes={r=nil, g=nil, b=nil, img=love.graphics.newImage("assets/character/shoes.png")}
+}
+ailments = {
+	spots=love.graphics.newImage("assets/character/spots.png"),
+	sweating=love.graphics.newImage("assets/character/sweating.png"),
+	welts=love.graphics.newImage("assets/character/welts.png"),
+	sunken=love.graphics.newImage("assets/character/sunken.png"),
+	bloodshot=love.graphics.newImage("assets/character/bloodshot.png")
 }
 
 function loadPatient(difficulty)
@@ -13,9 +20,9 @@ function loadPatient(difficulty)
 	--for i=1,6 do
 		--print(patients.ailments[i])
   
-  for ailment, value in pairs(patient.ailments) do
-  	print(ailment, value)
-  end
+  --for ailment, value in pairs(patient.ailments) do
+  --	print(ailment, value)
+  --end
 
   
   if(patient.ailments.skin=="red") then
@@ -61,43 +68,43 @@ end
 
 function drawPatient()
   love.graphics.setColor(patient.skin.r,patient.skin.g,patient.skin.b,255)
-  love.graphics.draw(love.graphics.newImage("assets/character/skin.png"), 580, 250, 0, 1, 1, 100, 100)
+  love.graphics.draw(patient.skin.img, 580, 250, 0, 1, 1, 100, 100)
 
   drawAilments()
 
   love.graphics.setColor(patient.shirt.r,patient.shirt.g,patient.shirt.b,255)
-  love.graphics.draw(love.graphics.newImage("assets/character/shirt.png"), 580, 250, 0, 1, 1, 100, 100)
+  love.graphics.draw(patient.shirt.img, 580, 250, 0, 1, 1, 100, 100)
   love.graphics.setColor(patient.pants.r,patient.pants.g,patient.pants.b,255)
-  love.graphics.draw(love.graphics.newImage("assets/character/pants.png"), 580, 250, 0, 1, 1, 100, 100)
+  love.graphics.draw(patient.pants.img, 580, 250, 0, 1, 1, 100, 100)
   love.graphics.setColor(patient.shoes.r,patient.shoes.g,patient.shoes.b,255)
-  love.graphics.draw(love.graphics.newImage("assets/character/shoes.png"), 580, 250, 0, 1, 1, 100, 100)
+  love.graphics.draw(patient.shoes.img, 580, 250, 0, 1, 1, 100, 100)
   
   love.graphics.setColor(patient.hair.r,patient.hair.g,patient.hair.b,255)
-  love.graphics.draw(love.graphics.newImage("assets/character/hair.png"), 580, 250, 0, 1, 1, 100, 100)
+  love.graphics.draw(patient.hair.img, 580, 250, 0, 1, 1, 100, 100)
 end
 
 function drawAilments()
 	if(patient.ailments.spots==1) then
   love.graphics.setColor(130,0,0,190)
-  love.graphics.draw(love.graphics.newImage("assets/character/spots.png"), 580, 250, 0, 1, 1, 100, 100)
+  love.graphics.draw(ailments.spots, 580, 250, 0, 1, 1, 100, 100)
 	end
 	if(patient.ailments.sweating==1) then
 	love.graphics.setColor(185,238,251,180)
-  love.graphics.draw(love.graphics.newImage("assets/character/sweating.png"), 580, 250, 0, 1, 1, 100, 100)
+  love.graphics.draw(ailments.sweating, 580, 250, 0, 1, 1, 100, 100)
 	end
 	if(patient.ailments.welts==1) then
 	love.graphics.setColor(205,78,78,160)
-  love.graphics.draw(love.graphics.newImage("assets/character/welts.png"), 580, 250, 0, 1, 1, 100, 100)
+  love.graphics.draw(ailments.welts, 580, 250, 0, 1, 1, 100, 100)
 	end
 	if(patient.ailments.sunken==1) then
 	love.graphics.setColor(0,0,0,80)
-  love.graphics.draw(love.graphics.newImage("assets/character/sunken.png"), 580, 250, 0, 1, 1, 100, 100)
+  love.graphics.draw(ailments.sunken, 580, 250, 0, 1, 1, 100, 100)
 	end
 	if(patient.ailments.bloodshot==1) then
 	love.graphics.setColor(208,77,64,200)
-  love.graphics.draw(love.graphics.newImage("assets/character/bloodshot.png"), 580, 250, 0, 1, 1, 100, 100)
+  love.graphics.draw(ailments.bloodshot, 580, 250, 0, 1, 1, 100, 100)
 	else
   love.graphics.setColor(patient.eyes.r,patient.eyes.g,patient.eyes.b,255)
-  love.graphics.draw(love.graphics.newImage("assets/character/eyes.png"), 580, 250, 0, 1, 1, 100, 100)
+  love.graphics.draw(patient.eyes.img, 580, 250, 0, 1, 1, 100, 100)
 	end
 end
