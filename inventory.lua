@@ -39,7 +39,7 @@ function loadInv()
   addIngredient(70, 70, "Goat Milk", "gm") -- gm
   addIngredient(140, 70, "Bog Water", "bw") -- bw
   addIngredient(210, 70, "Aloe", "al") -- al
-  addIngredient(280, 70, "Witches Hair", "wi") -- wi
+  addIngredient(280, 70, "Witch's Hair", "wi") -- wi
   -- third row:
   addIngredient(0, 140, "Newt Tongue", "nt") --nt
   addIngredient(70, 140, "Croc Scales", "cs") -- cs
@@ -92,7 +92,8 @@ function drawInv()
       love.graphics.setColor(255, 255, 255, 255)
       -- continue drawing object
     end
-    love.graphics.print(button.text, button.x, button.y)
+    love.graphics.setFont(thin)
+    love.graphics.printf(button.text, button.x+3, button.y+25, button.w-6, "center")
   end
 end
 

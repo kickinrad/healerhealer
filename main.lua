@@ -2,6 +2,7 @@
 
 debug = true
 
+require "text"
 inventory = require "inventory"
 require "cauldron"
 
