@@ -15,17 +15,10 @@ function treatPatient()
   table.sort(testPatient, sortTreatment)
   table.sort(cauldron, sortTreatment)
 
---[[  print("testpatient:...")
-  for i=1, table.getn(testPatient) do
-    print(i, ':', testPatient[i])
+  if table.getn(cauldron) == 0 then
+    print("you didnt do anything!")
+    return
   end
-
-  print("cauldron:...")
-  for i=1, table.getn(cauldron) do
-    print(i, ':', cauldron[i])
-  end--]]
-
-  --compare with testPatient
 
   status = false
   for i=1,table.getn(testPatient) do

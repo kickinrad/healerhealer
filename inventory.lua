@@ -57,7 +57,7 @@ end
 
 function updateButtons(dt)
   -- checks for mouse clicks
-  for i, button in ipairs(inventory.buttons) do
+  for _, button in ipairs(inventory.buttons) do
     if love.mouse.getX() > button.x and love.mouse.getX() < button.x + button.w and
       love.mouse.getY() > button.y and love.mouse.getY() < button.y + button.h and
       love.mouse.isDown(1) and buttonTimer <= 0 then
@@ -96,7 +96,7 @@ end
 function drawInv()
   for i, button in ipairs(inventory.buttons) do
     if button.backgroundDraw then
-      love.graphics.setColor(255, 0, 0, 255)
+      love.graphics.setColor(255, 0, 0, 150)
       love.graphics.rectangle("fill", button.x, button.y, button.w, button.h)
       love.graphics.setColor(255, 255, 255, 255)
       -- continue drawing object
