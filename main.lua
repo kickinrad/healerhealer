@@ -3,7 +3,7 @@
 debug = true
 
 require "text"
-inventory = require "inventory"
+local inventory = require "inventory"
 require "cauldron"
 
 function love.load()
@@ -16,6 +16,7 @@ function love.update(dt)
   end
 
   updateButtons(dt)
+  updateDialogue(dt)
 end
 
 function love.draw()
@@ -27,6 +28,9 @@ function love.draw()
   -- inventory draws:
   drawInv() -- draws button text
   drawGrid() -- draws button grid
+
+  -- dialogue draws:
+  drawDialogue()
   if debug then
     love.graphics.setColor(255, 0, 0, 255) -- set color to red
     love.graphics.print("X     Y", 5, 560)
