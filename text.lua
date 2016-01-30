@@ -19,8 +19,10 @@ local buttonTimerMax = 0.2
 local buttonTimer = 0
 
 --function loadSayings()
---  stuff
+-- load all sayings from patient and store in patient sayings to be displayed
 --end
+
+local i = 1
 
 function updateDialogue(dt)
   -- if mouse clicks dialogueBox
@@ -29,6 +31,11 @@ function updateDialogue(dt)
     love.mouse.isDown(1) and buttonTimer <= 0 then
       buttonTimer = buttonTimerMax
       dialogueBox.backgroundDraw = true -- set background draw to true
+      if i < table.getn(patientSayings) then
+        i = i + 1
+      elseif i >= table.getn(patientSayings) then
+        i = 1
+      end
   end
 
   if buttonTimer <= 0 then -- if button timer runs out
@@ -42,12 +49,16 @@ function updateDialogue(dt)
 end
 
 function drawDialogue()
-  love.graphics.setFont(big_gothic)
-  love.graphics.printf(patientSayings[3], 360, 5, 450)
-  love.graphics.setFont(thin)
-  if dialogueBox.backgroundDraw then
-    love.graphics.setColor(255, 0, 0, 255)
+  if dialogueBox.backgroundDraw then -- if clicked draw background
+    love.graphics.setColor(255, 0, 0, 150) -- set color to red
     love.graphics.rectangle("fill", 350, 0, 450, 100)
     love.graphics.setColor(255, 255, 255, 255)
   end
+
+  love.graphics.setFont(big_gothic)
+  love.graphics.printf(patientSayings[i], 360, 5, 450)
+  love.graphics.setFont(thin)
+  love.graphics.printf(i, 360, 75, 50)
+  love.graphics.printf("/", 365, 75, 50)
+  love.graphics.printf(table.getn(patientSayings), 370, 75, 50)
 end
