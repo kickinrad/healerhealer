@@ -5,10 +5,16 @@ debug = true
 require "text"
 require "manual"
 local inventory = require "inventory"
+require "patient"
 require "cauldron"
+require "math"
 
 function love.load()
+  rng = love.math.newRandomGenerator()
+  rng:setSeed(os.time())
+
   loadInv() -- load's inventory.buttons with names and positons
+  loadPatient(1)
   --loadButtons()
 end
 
@@ -26,7 +32,7 @@ function love.draw()
   love.graphics.line(350, 0, 350, 600) -- split patient/inventory sections
   love.graphics.rectangle("line", inventory.box.x, inventory.box.y, inventory.box.w, inventory.box.h) -- inventory box
   love.graphics.rectangle("line", 350, 0, 450, 100) -- dialogue box
-  --love.graphics.rectangle("line", 350, 400, 450, 200) -- reference manual box
+  love.graphics.rectangle("line", 350, 400, 450, 200) -- reference manual box
 
   -- inventory draws:
   drawInv() -- draws button text
@@ -34,6 +40,8 @@ function love.draw()
   --drawMenuGrid() -- draws menu grid
   -- dialogue draws:
   drawDialogue()
+  drawPatient()
+
   if debug then
     love.graphics.setColor(255, 0, 0, 255) -- set color to red
     love.graphics.print("X     Y", 5, 560)
