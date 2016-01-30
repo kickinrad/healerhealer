@@ -17,12 +17,41 @@ ailments = {
 
 function loadPatient(difficulty)
 
-	--for i=1,6 do
-		--print(patients.ailments[i])
-  
-  --for ailment, value in pairs(patient.ailments) do
-  --	print(ailment, value)
-  --end
+	for i=1, difficulty do
+  	print("test")
+  	done = 0
+  	while (done==0) do
+	  	rand = rng:random(1,7)
+	  	if (rand==1 and patient.ailments.skin==nil) then
+	  		patient.ailments.skin="red"
+	  		done = 1
+	  	end
+	  	if (rand==2 and patient.ailments.skin==nil) then
+	  		patient.ailments.skin="grey"
+	  		done = 1
+	  	end
+	  	if (rand==3 and patient.ailments.sweating==0) then
+	  		patient.ailments.sweating=1
+	  		done = 1
+	  	end
+	  	if (rand==4 and patient.ailments.bloodshot==0) then
+	  		patient.ailments.bloodshot=1
+	  		done = 1
+	  	end
+	  	if (rand==5 and patient.ailments.sunken==0) then
+	  		patient.ailments.sunken=1
+	  		done = 1
+	  	end
+	  	if (rand==6 and patient.ailments.welts==0) then
+	  		patient.ailments.welts=1
+	  		done = 1
+	  	end
+	  	if (rand==7 and patient.ailments.spots==0) then
+	  		patient.ailments.spots=1
+	  		done = 1
+	  	end
+  	end
+  end
 
   
   if(patient.ailments.skin=="red") then
