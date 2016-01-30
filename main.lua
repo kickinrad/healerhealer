@@ -9,8 +9,11 @@ require "cauldron"
 require "math"
 
 function love.load()
+  rng = love.math.newRandomGenerator()
+  rng:setSeed(os.time())
+
   loadInv() -- load's inventory.buttons with names and positons
-  
+  loadPatient()
 end
 
 function love.update(dt)
