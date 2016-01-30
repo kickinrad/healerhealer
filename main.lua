@@ -3,11 +3,14 @@
 debug = true
 
 require "text"
+require "patient"
 inventory = require "inventory"
 require "cauldron"
+require "math"
 
 function love.load()
   loadInv() -- load's inventory.buttons with names and positons
+  
 end
 
 function love.update(dt)
@@ -23,10 +26,12 @@ function love.draw()
   love.graphics.rectangle("line", inventory.box.x, inventory.box.y, inventory.box.w, inventory.box.h) -- inventory box
   love.graphics.rectangle("line", 350, 0, 450, 100) -- dialogue box
   love.graphics.rectangle("line", 350, 400, 450, 200) -- reference manual box
-
   -- inventory draws:
   drawInv() -- draws button text
-  drawGrid() -- draws button grid
+  drawGrid() -- draws button grid 
+
+  drawPatient() 
+
   if debug then
     love.graphics.setColor(255, 0, 0, 255) -- set color to red
     love.graphics.print("X     Y", 5, 560)

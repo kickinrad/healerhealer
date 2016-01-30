@@ -48,7 +48,7 @@ function loadInv()
   addIngredient(280, 140, "Quail Egg", "qe") -- qe
   -- fourth row:
   addIngredient(0, 210, "Rosemary", "ro") --ro
-  addIngredient(70, 210, "Rats Tail", "rt") -- rt
+  addIngredient(70, 210, "Rat's Tail", "rt") -- rt
   addIngredient(140, 210, "Ash", "as") -- as
 end
 
