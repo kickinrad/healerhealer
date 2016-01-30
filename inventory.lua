@@ -50,6 +50,9 @@ function loadInv()
   addIngredient(0, 210, "Rosemary", "ro") --ro
   addIngredient(70, 210, "Rats Tail", "rt") -- rt
   addIngredient(140, 210, "Ash", "as") -- as
+
+  -- treatment buttons
+  addIngredient(280, 530, "Treat", "")
 end
 
 function updateButtons(dt)
@@ -58,9 +61,15 @@ function updateButtons(dt)
     if love.mouse.getX() > button.x and love.mouse.getX() < button.x + button.w and
       love.mouse.getY() > button.y and love.mouse.getY() < button.y + button.h and
       love.mouse.isDown(1) and buttonTimer <= 0 then
-        addToCauldron(button.alias)
-        button.backgroundDraw = true
-        buttonTimer = buttonTimerMax
+        if button.text == "Treat" then -- if the player clicks Treat
+          button.backgroundDraw = true
+          buttonTimer = buttonTimerMax
+          treatPatient()
+        else
+          addToCauldron(button.alias)
+          button.backgroundDraw = true
+          buttonTimer = buttonTimerMax
+        end
         -- spawn object to fall into cauldron
       elseif buttonTimer <= 0 then
         button.backgroundDraw = false
