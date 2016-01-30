@@ -15,9 +15,9 @@ function loadPatient(difficulty)
   
   for ailment, value in pairs(patient.ailments) do
   	print(ailment, value)
-
   end
 
+  
   if(patient.ailments.skin=="red") then
   	patient.skin.r=163
 		patient.skin.g=92
