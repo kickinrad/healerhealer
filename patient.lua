@@ -194,13 +194,13 @@ end
 
 function getCures()
  cures = {}
- if (patient.ailments.skin=="red") then table.insert(cures, {"ey", "fr", "sa", 1}) end
- if (patient.ailments.skin=="grey") then table.insert(cures, {"al", "cp", "cp", "df", "ft", 2}) end
- if (patient.ailments.sweating==1) then table.insert(cures, {"al", "bw", "gm", 3}) end
- if (patient.ailments.bloodshot==1) then table.insert(cures, {"cs", "nt", "wi", 4}) end
- if (patient.ailments.sunken==1) then table.insert(cures, {"qe", "vi", "wf", 5}) end
- if (patient.ailments.welts==1) then table.insert(cures, {"as", "ro", "rt", 6}) end
- if (patient.ailments.spots==1) then table.insert(cures, {"al", "fl", "ot", 7}) end
+ if (patient.ailments.skin=="red") then table.insert(cures, {"Aloe", "Dove's Wing", "Olive Twig", "Rosemary", "Sow's Milk", 1}) end
+ if (patient.ailments.skin=="grey") then table.insert(cures, {"Aloe", "Cat's Paw", "Cat's Paw", "Dragonfly's Wing", "Fox's Tail", 2}) end
+ if (patient.ailments.sweating==1) then table.insert(cures, {"Ash", "Bog Water", "Rosemary", "Salt", "Vinegar",  3}) end
+ if (patient.ailments.bloodshot==1) then table.insert(cures, {"Mandrake Root", "Sage's Eye", "Toad's Tongue", "Wheat", "Witch's Hair", 4}) end
+ if (patient.ailments.sunken==1) then table.insert(cures, {"Fox's Tail", "Quail Egg", "Vinegar", "Vinegar", "Wolf's Fang", 5}) end
+ if (patient.ailments.welts==1) then table.insert(cures, {"Crocodile Scales", "Frog", "Mandrake Root", "Newt Tongue", "Rat's Tail", 6}) end
+ if (patient.ailments.spots==1) then table.insert(cures, {"Cat's Paw", "Dahlia", "Familiar's Blood", "Wolf's Fang", "Wolf's Fang", 7}) end
  return cures
 end
 

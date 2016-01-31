@@ -77,7 +77,7 @@ function updateButtons(dt)
           inventory.lastItemAdded = ""
           treatPatient()
         elseif table.getn(cauldron) ~= 5 then
-          addToCauldron(button.alias)
+          addToCauldron(button.text)
           inventory.lastItemAdded = button.text
           button.backgroundDraw = true
           buttonTimer = buttonTimerMax
