@@ -11,35 +11,39 @@ function addToCauldron(x)
 end
 
 function treatPatient()
-  print("W'ere gonna treat ya lmao")
+  print("We're gonna treat ya lmao")
   table.sort(testPatient, sortTreatment)
   table.sort(cauldron, sortTreatment)
 
   if table.getn(cauldron) == 0 then
-    print("you didnt do anything!")
+    print("You didn't do anything!")
     return
   end
 
   status = false
-  for i=1,table.getn(testPatient) do
-    if testPatient[i] == cauldron[i] then
-      status = true
-    else
-      status = false
-      break
-    end
-  end
+  curesNeeded = getCures()
+  for n=1, table.getn(curesNeeded) do
+	  for i=1,table.getn(curesNeeded[n])-1 do
+	    if curesNeeded[n][i] == cauldron[i] then
+	      status = true
+	    else
+	      status = false
+	      break
+	    end
+	  end
 
-  if status then
-    print("Treated lmao")
-  else
-    print("sorry i messed up lolz")
-  end
-
+	  if status then
+	    print("Treated symptom!!!")
+	    print(curesNeeded[n][1])
+	    cure(curesNeeded[n][table.getn(curesNeeded[n])])
+	  else
+	    print("Symptom not treated")
+	  end
+	end
   cauldron = {} -- empty cauldron
 end
 
-function testDrawCauldron()
+function testDrawCauldron(asd)
   love.graphics.print(cauldron, 5, 545)
   love.graphics.print(testPatient, 550, 300)
 end

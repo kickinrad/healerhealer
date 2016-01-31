@@ -140,12 +140,48 @@ end
 
 function getCures()
  cures = {}
- if (patient.ailments.skin=="red") then table.insert(cures, {"fr", "sa", "ey"}) end
- if (patient.ailments.skin=="grey") then table.insert(cures, {"fl", "wh", "ot"}) end
- if (patient.ailments.sweating==1) then table.insert(cures, {"gm", "bw", "al"}) end
- if (patient.ailments.bloodshot==1) then table.insert(cures, {"wi", "nt", "cs"}) end
- if (patient.ailments.sunken==1) then table.insert(cures, {"vi", "wf", "qe"}) end
- if (patient.ailments.welts==1) then table.insert(cures, {"ro", "rt", "as"}) end
- if (patient.ailments.spots==1) then table.insert(cures, {"al", "ot", "fl"}) end
+ if (patient.ailments.skin=="red") then table.insert(cures, {"ey", "fr", "sa", 1}) end
+ if (patient.ailments.skin=="grey") then table.insert(cures, {"fl", "ot", "wh", 2}) end
+ if (patient.ailments.sweating==1) then table.insert(cures, {"al", "bw", "gm", 3}) end
+ if (patient.ailments.bloodshot==1) then table.insert(cures, {"cs", "nt", "wi", 4}) end
+ if (patient.ailments.sunken==1) then table.insert(cures, {"qe", "vi", "wf", 5}) end
+ if (patient.ailments.welts==1) then table.insert(cures, {"as", "ro", "rt", 6}) end
+ if (patient.ailments.spots==1) then table.insert(cures, {"al", "fl", "ot", 7}) end
  return cures
+end
+
+function cure(num)
+	print("trying to cure")
+	print("num:",num)
+	if (num==1 or num ==2) then 
+		patient.ailments.skin=nil 
+		print("ayy")
+		fixSkin()
+	end
+	if (num==3) then 
+		patient.ailments.sweating=0 
+		fixSkin()
+	end
+	if (num==4) then patient.ailments.bloodshot=0 end
+	if (num==5) then patient.ailments.sunken=0 end
+	if (num==6) then patient.ailments.welts=0 end
+	if (num==7) then patient.ailments.spots=0 end
+	drawPatient()
+	drawAilments()
+	return checkIfCured()
+end
+
+function checkIfCured()
+	if (patient.ailments.skin==nil and patient.ailments.sweating and patient.ailments.bloodshot and patient.ailments.sunken and patient.ailments.welts and patient.ailments.spots) then
+		--patient is cured code here
+		return 1
+	end
+	return 0
+end
+
+function fixSkin()
+	patient.skin.k=rng:random(-3,3)
+	patient.skin.r=168.8+38.5*patient.skin.k
+	patient.skin.g=122.5+32.1*patient.skin.k
+	patient.skin.b=96.7+26.3*patient.skin.k
 end
