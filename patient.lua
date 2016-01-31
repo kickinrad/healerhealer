@@ -273,6 +273,7 @@ function checkIfCured()
 		score = score+1
 		finished = 1
 		loadPatient(2)
+		setMsg("Patient has been cured!")
 		patTimer = patTimerMax
 
 		return 1

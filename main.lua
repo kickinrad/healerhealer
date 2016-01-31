@@ -8,6 +8,7 @@ local inventory = require "inventory"
 require "patient"
 require "cauldron"
 require "math"
+require "game"
 
 function love.load()
   rng = love.math.newRandomGenerator()
@@ -16,7 +17,7 @@ function love.load()
   finished = 0
 
   loadInv() -- load's inventory.buttons with names and positons
-  loadPatient(3)
+  loadPatient(1)
   loadManual()
   --loadButtons()
   loadSayings()
@@ -32,6 +33,7 @@ function love.update(dt)
   updateDialogue(dt)
   updateManual(dt)
   updatePatient(dt)
+  updateGame(dt)
 end
 
 function love.draw()
@@ -54,6 +56,9 @@ function love.draw()
 
   -- cauldron draws:
   drawCauldron()
+
+  -- message draw
+  drawMsg()
 
   if debug then
     love.graphics.setColor(255, 0, 0, 255) -- set color to red
