@@ -3,7 +3,7 @@
 manual = {
   buttons = {},
   introRead = false,
-  pageNumberMax = 10,
+  pageNumberMax = 14,
   pageNumber = 1,
   dps = {
     { -- 1
@@ -33,7 +33,7 @@ manual = {
       },
       right = {
         title = "\n\nT",
-        description = "\n\t    reatments:\n\n\t- Bath?"
+        description = "\n\t    reatments:\n\n\t- Balm of Vigor\n\n\t- Balm of Soothing\n\n\t- Cooling Tincture\n\n\t- Mesmer's Medicine\n\n\t- Enlivening Tincture\n\n\t- Blemishing Balm\n\n\t- Solomon's Tincture"
       }
     },
     { -- 4
@@ -106,6 +106,46 @@ manual = {
         description = ""
       }
     },
+    { -- 11
+      left = {
+        title = "Balm of Vigor",
+        description = "\t- Aloe\n\n\t- Dragonfly Wing\n\n\t- Fox's Tail\n\n\t- Cat's Paw x 2" -- coughing, shivers, lost hair, rashes, gaunt features
+      },
+      right = {
+        title = "Balm of Soothing",
+        description = "\n\t- Aloe\n\n\t- Olive Twin\n\n\t- Dove's Wing\n\n\t- Rosemary\n\n\t- Sow's Milk"
+      }
+    },
+    { -- 12
+      left = {
+        title = "Cooling Tincture",
+        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+      },
+      right = {
+        title = "Mesmer s Medicine",
+        description = ""
+      }
+    },
+    { -- 13
+      left = {
+        title = "Enlivening Tincture",
+        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+      },
+      right = {
+        title = "Blemishing Balm",
+        description = ""
+      }
+    },
+    { -- 14
+      left = {
+        title = "Solomon s Tincture",
+        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+      },
+      right = {
+        title = "",
+        description = ""
+      }
+    }
   }
 }
 
@@ -149,6 +189,14 @@ function updateManual(dt)
         manual.pageNumber = 9
       elseif button.text == "redspots" then
         manual.pageNumber = 10
+      elseif button.text == "vigor" or button.text == "soothing" then
+        manual.pageNumber = 11
+      elseif button.text == "cooling" or button.text == "mesmer" then
+        manual.pageNumber = 12
+      elseif button.text == "enlivening" or button.text == "blemish" then
+        manual.pageNumber = 13
+      elseif button.text == "whip" then
+        manual.pageNumber = 14
       end
 
       buttonTimer = buttonTimerMax
@@ -162,6 +210,8 @@ function updateManual(dt)
         -- add a ton of buttons
         addButton(730, 345, 40, 255, "right") -- right page button
         addButton(375, 345, 35, 255, "left") -- left page button
+
+        -- symptoms
         addButton(410, 444, 135, 10, "grey") -- grey skin 22 difference in pixels on the y axis
         addButton(410, 466, 135, 10, "redskin") -- red skin
         addButton(410, 488, 135, 10, "sweat") -- sweating
@@ -169,10 +219,18 @@ function updateManual(dt)
         addButton(410, 532, 135, 10, "sunken") -- sunken eyes
         addButton(410, 554, 135, 10, "welts") -- welts
         addButton(410, 576, 135, 10, "redspots") -- red spots
-      elseif manual.pageNumber >= 4 and manual.pageNumber <= 9 then
+
+        addButton(590, 444, 135, 10, "vigor") -- grey skin 22 difference in pixels on the y axis
+        addButton(590, 466, 135, 10, "soothing")
+        addButton(590, 488, 135, 10, "cooling")
+        addButton(590, 510, 135, 10, "mesmer")
+        addButton(590, 532, 135, 10, "enlivening")
+        addButton(590, 554, 135, 10, "blemish")
+        addButton(590, 576, 135, 10, "whip")
+      elseif manual.pageNumber >= 4 and manual.pageNumber <= 13 then
         addButton(575, 345, 200, 255, "right") -- right page button
         addButton(375, 345, 200, 255, "left") -- left page button
-      elseif manual.pageNumber == 10 then -- !!!last page!!!
+      elseif manual.pageNumber == 14 then -- !!!last page!!!
         addButton(375, 345, 200, 255, "left") -- left page button
       end
     end

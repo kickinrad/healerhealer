@@ -122,7 +122,7 @@ function drawInv()
   end
 
   -- draw last item added
-  love.graphics.printf(inventory.lastItemAdded, 148, 555, 70, "center")
+  love.graphics.printf(inventory.lastItemAdded, 145, 555, 70, "center")
 end
 
 return inventory

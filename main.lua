@@ -18,6 +18,7 @@ function love.load()
   loadManual()
   --loadButtons()
   loadSayings()
+  loadCauldron()
 end
 
 function love.update(dt)
@@ -47,6 +48,9 @@ function love.draw()
 
   -- manual draws:
   drawManual()
+
+  -- cauldron draws:
+  drawCauldron()
 
   if debug then
     love.graphics.setColor(255, 0, 0, 255) -- set color to red

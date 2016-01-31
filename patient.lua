@@ -20,7 +20,7 @@ dialogue = {
 		"My skin is grey as ash, and my hear seems black as soot.", -- 1
 		"The vibrance has fled from my bones! Not a cheer in sight.", -- 2
 		"Dear healer, it seems my skin is as bleak as I.", -- 3
-		"Are I not a sad sight, brother? This dull flesh dulls yet its owners heart.", -- 4
+		"Am I not a sad sight, brother? This dull flesh dulls yet its owners heart.", -- 4
 		"What a dreadful shade. Wrought no doubt by a spirit as wretched as its taste in colors.", -- 5
 		"What a horrible night to have a curse." -- 6
 	},
