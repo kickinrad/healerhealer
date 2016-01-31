@@ -20,6 +20,18 @@ local bounds = {
   columns = 5
 }
 
+local colors = {
+}
+
+local dropItem = {
+  x = 0,
+  y = 0,
+  w = 50,
+  h = 50,
+  color = {255, 255, 255, 255},
+  isVisible = false
+}
+
 local buttonTimerMax = 0.2
 local buttonTimer = 0
 
@@ -79,6 +91,7 @@ function updateButtons(dt)
         elseif table.getn(cauldron) ~= 5 then
           addToCauldron(button.text)
           inventory.lastItemAdded = button.text
+          dropItem.isVisible = true -- !!!!!!!!!!!!!!!!!!!!!!!!!!!!
           button.backgroundDraw = true
           buttonTimer = buttonTimerMax
         else
@@ -96,6 +109,7 @@ function updateButtons(dt)
   if buttonTimer > 0 then
     buttonTimer = buttonTimer - (1 *  dt)
   end
+
 end
 
 function drawGrid()
