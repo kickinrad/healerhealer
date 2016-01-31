@@ -17,7 +17,7 @@ ailments = {
 
 dialogue = {
 	grey = {
-		"My skin is grey as ash, and my hear seems black as soot.", -- 1
+		"My skin is grey as ash, and my heart seems black as soot.", -- 1
 		"The vibrance has fled from my bones! Not a cheer in sight.", -- 2
 		"Dear healer, it seems my skin is as bleak as I.", -- 3
 		"Am I not a sad sight, brother? This dull flesh dulls yet its owners heart.", -- 4
@@ -37,6 +37,23 @@ dialogue = {
 		"Please, a drop of water, healer... I am so parched.", -- 3
 		"My haze is frienzied, brother... Anything...Anything for respite from the nightmares...", -- 4
 		"Please, a lasting care, healer. I have drenched all of my good attire." -- 5
+	},
+	bloodshot = {
+		"I have forsaken sleep for days. These bleeding eyes simply cannot close.", -- 1
+		"I cannot bear the site of you, healer. I swear it be my eyes speeking there, not I.", -- 2
+		"All my sight is bathed in red. Does this shade not haunt your vision too, healer?" -- 3
+	},
+	sunken = {
+		"I have seen portents, healer, terrible portents, etched into my eyes...", -- 1
+		"Sleep is death, healer.", -- 2
+		"These eyes have beared witness to wickedness, my healer. True wickedness." -- 3
+	},
+	welts = {
+		"Can one ever leave a blemished fool such as I?", -- 1
+		"What a twisted creature I have become. Bumps and boils as some sort of ogre." -- 2
+	},
+	spots = {
+		"I can see constellations in my skin." -- 1
 	}
 }
 
@@ -46,12 +63,36 @@ local patTimer = 0
 function getDialogue()
 	returnArray = {} -- return this table lmao
 
--- change to if/else tree for later when adding patient ailment checks
-
-	for dialogue, value in pairs(dialogue) do
-		rand = rng:random(1, table.getn(value)) -- random number from 1 - value.size
-		table.insert(returnArray, value[rand])
+	-- change to if/else tree for later when adding patient ailment checks
+	if patient.ailments.skin == "grey" then
+		rand = rng:random(1, table.getn(dialogue.grey)) -- random number from 1 - value.size
+		table.insert(returnArray, dialogue.grey[rand])
 	end
+	if patient.ailments.skin == "red" then
+		rand = rng:random(1, table.getn(dialogue.redskin)) -- random number from 1 - value.size
+		table.insert(returnArray, dialogue.redskin[rand])
+	end
+	if patient.ailments.sweating == 1 then
+		rand = rng:random(1, table.getn(dialogue.sweating)) -- random number from 1 - value.size
+		table.insert(returnArray, dialogue.sweating[rand])
+	end
+	if patient.ailments.bloodshot == 1 then
+		rand = rng:random(1, table.getn(dialogue.bloodshot)) -- random number from 1 - value.size
+		table.insert(returnArray, dialogue.bloodshot[rand])
+	end
+	if patient.ailments.sunken == 1 then
+		rand = rng:random(1, table.getn(dialogue.sunken)) -- random number from 1 - value.size
+		table.insert(returnArray, dialogue.sunken[rand])
+	end
+	if patient.ailments.welts == 1 then
+		rand = rng:random(1, table.getn(dialogue.welts)) -- random number from 1 - value.size
+		table.insert(returnArray, dialogue.welts[rand])
+	end
+	if patient.ailments.spots == 1 then
+		rand = rng:random(1, table.getn(dialogue.spots)) -- random number from 1 - value.size
+		table.insert(returnArray, dialogue.spots[rand])
+	end
+
 	-- return array of dialogue
 	return returnArray
 end

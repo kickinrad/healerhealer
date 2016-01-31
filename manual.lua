@@ -39,7 +39,7 @@ manual = {
     { -- 4
       left = {
         title = "Greyed Skin",
-        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+        description = "\n\tCured by: Balm of Vigor" -- coughing, shivers, lost hair, rashes, gaunt features
       },
       right = {
         title = "",
@@ -49,7 +49,7 @@ manual = {
     { -- 5
       left = {
         title = "Red Skin",
-        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+        description = "\n\tCured by: Balm of Soothing" -- coughing, shivers, lost hair, rashes, gaunt features
       },
       right = {
         title = "",
@@ -59,7 +59,7 @@ manual = {
     { -- 6
       left = {
         title = "Sweating",
-        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+        description = "\n\tCured by: Cooling Tincture" -- coughing, shivers, lost hair, rashes, gaunt features
       },
       right = {
         title = "",
@@ -69,7 +69,7 @@ manual = {
     { -- 7
       left = {
         title = "Bloodshot Eyes",
-        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+        description = "\n\tCured by: Mesmer's Medicine" -- coughing, shivers, lost hair, rashes, gaunt features
       },
       right = {
         title = "",
@@ -79,7 +79,7 @@ manual = {
     { -- 8
       left = {
         title = "Sunken Eyes",
-        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+        description = "\n\tCured by: Enlivening Tincture" -- coughing, shivers, lost hair, rashes, gaunt features
       },
       right = {
         title = "",
@@ -89,7 +89,7 @@ manual = {
     { -- 9
       left = {
         title = "Welts",
-        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+        description = "\n\tCured by: Blemishing Balm" -- coughing, shivers, lost hair, rashes, gaunt features
       },
       right = {
         title = "",
@@ -99,7 +99,7 @@ manual = {
     { -- 10
       left = {
         title = "Red Spots",
-        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+        description = "\n\tCured by: Solomon's Tincture" -- coughing, shivers, lost hair, rashes, gaunt features
       },
       right = {
         title = "",
@@ -119,27 +119,27 @@ manual = {
     { -- 12
       left = {
         title = "Cooling Tincture",
-        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+        description = "\n\t- Salt\n\n\t- Vinegar\n\n\t- Ash\n\n\t- Bog Water\n\n\t- Rosemary" -- coughing, shivers, lost hair, rashes, gaunt features
       },
       right = {
         title = "Mesmer s Medicine",
-        description = ""
+        description = "\n\t- Sage's Eye\n\n\t- Witch's Hair\n\n\t- Mandrake Root\n\n\t- Toad's Tongue\n\n\t- Wheat"
       }
     },
     { -- 13
       left = {
         title = "Enlivening Tincture",
-        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+        description = "\n\t- Wolf's Fang\n\n\t- Vinegar x 2\n\n\t- Fox's Tail\n\n\t- Quail Egg" -- coughing, shivers, lost hair, rashes, gaunt features
       },
       right = {
         title = "Blemishing Balm",
-        description = ""
+        description = "\n\t- Newt Tongue\n\n\t- Croc Scales\n\n\t- Rat's Tail\n\n\t- Frog\n\n\t- Mandrake Root"
       }
     },
     { -- 14
       left = {
         title = "Solomon s Tincture",
-        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+        description = "\n\t- Familiar's Blood\n\n\t- Wolf's Fang x 2\n\n\t- Dahlia\n\n\t- Cat's Paw" -- coughing, shivers, lost hair, rashes, gaunt features
       },
       right = {
         title = "",

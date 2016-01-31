@@ -16,7 +16,7 @@ function love.load()
   finished = 0
 
   loadInv() -- load's inventory.buttons with names and positons
-  loadPatient(1)
+  loadPatient(3)
   loadManual()
   --loadButtons()
   loadSayings()
