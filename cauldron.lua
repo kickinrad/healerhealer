@@ -19,6 +19,7 @@ end
 
 function treatPatient()
   print("We're gonna treat ya lmao")
+  table.sort(testPatient, sortTreatment)
   table.sort(cauldron, sortTreatment)
 
   if table.getn(cauldron) == 0 then
@@ -39,13 +40,11 @@ function treatPatient()
 	  end
 
 	  if status then
-	    --print("Treated symptom!!!")
-	    message = "Symptom treated!"
+	    print("Treated symptom!!!")
 	    print(curesNeeded[n][1])
 	    cure(curesNeeded[n][table.getn(curesNeeded[n])])
 	  else
-	    --print("Symptom not treated")
-	    message = "Your cure was ineffective."
+	    print("Symptom not treated")
 	  end
 	end
   cauldron = {} -- empty cauldron
@@ -61,4 +60,5 @@ end
 
 function testDrawCauldron(asd)
   love.graphics.print(cauldron, 5, 545)
+  love.graphics.print(testPatient, 550, 300)
 end
