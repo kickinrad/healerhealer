@@ -35,6 +35,76 @@ manual = {
         description = "\n\t    reatments:\n\n\t- Bath?"
       }
     },
+    { -- 4
+      left = {
+        title = "Greyed Skin",
+        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+      },
+      right = {
+        title = "",
+        description = ""
+      }
+    },
+    { -- 5
+      left = {
+        title = "Red Skin",
+        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+      },
+      right = {
+        title = "",
+        description = ""
+      }
+    },
+    { -- 6
+      left = {
+        title = "Sweating",
+        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+      },
+      right = {
+        title = "",
+        description = ""
+      }
+    },
+    { -- 7
+      left = {
+        title = "Bloodshot Eyes",
+        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+      },
+      right = {
+        title = "",
+        description = ""
+      }
+    },
+    { -- 8
+      left = {
+        title = "Sunken Eyes",
+        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+      },
+      right = {
+        title = "",
+        description = ""
+      }
+    },
+    { -- 9
+      left = {
+        title = "Welts",
+        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+      },
+      right = {
+        title = "",
+        description = ""
+      }
+    },
+    { -- 10
+      left = {
+        title = "Red Spots",
+        description = "\t" -- coughing, shivers, lost hair, rashes, gaunt features
+      },
+      right = {
+        title = "",
+        description = ""
+      }
+    },
   }
 }
 
@@ -60,6 +130,20 @@ function updateManual(dt)
         manual.pageNumber = manual.pageNumber + 1
       elseif button.text == "left" then
         manual.pageNumber = manual.pageNumber - 1
+      elseif button.text == "grey" then
+        manual.pageNumber = 4
+      elseif button.text == "redskin" then
+        manual.pageNumber = 5
+      elseif button.text == "sweat" then
+        manual.pageNumber = 6
+      elseif button.text == "bloodshot" then
+        manual.pageNumber = 7
+      elseif button.text == "sunken" then
+        manual.pageNumber = 8
+      elseif button.text == "welts" then
+        manual.pageNumber = 9
+      elseif button.text == "redspots" then
+        manual.pageNumber = 10
       end
 
       buttonTimer = buttonTimerMax
@@ -80,8 +164,11 @@ function updateManual(dt)
         addButton(410, 532, 135, 10, "sunken") -- sunken eyes
         addButton(410, 554, 135, 10, "welts") -- welts
         addButton(410, 576, 135, 10, "redspots") -- red spots
-      elseif manual.pageNumber == 4 then
-
+      elseif manual.pageNumber >= 4 and manual.pageNumber <= 9 then
+        addButton(575, 345, 200, 255, "right") -- right page button
+        addButton(375, 345, 200, 255, "left") -- left page button
+      elseif manual.pageNumber == 10 then -- !!!last page!!!
+        addButton(375, 345, 200, 255, "left") -- left page button
       end
     end
 
@@ -121,68 +208,3 @@ function drawManual()
   love.graphics.setColor(255, 255, 255, 255)
 
 end
-
-
---[[
-manual = {
-  open = false,
-  mainMenu = false,
-  buttons = {}
-}
-
-local buttonTimerMax = 0.2
-local buttonTimer = 0
-
-function addButton(xPos, yPos, width, height, textName)
-    newButton = {x = xPos, y = yPos, w = width, h = height, text = textName, backgroundDraw = false}
-    table.insert(manual.buttons, newButton)
-end
-
-function loadButtons()
-  --addButton()
-  addButton(730, 530, 70, 70, "Grimoire")
-end
-
-function updateManual(dt)
-  for _, button in ipairs(manual.buttons) do
-    -- if mouse over button, draw background
-    -- if display manual button is clicked, add 4 buttons to buttons array (diseases ailments treatments and close X))
-    if manual.open == false and love.mouse.getX() > button.x and love.mouse.getX() < button.x + button.w and
-      love.mouse.getY() > button.y and love.mouse.getY() < button.y + button.h and love.mouse.isDown(1) and buttonTimer <= 0 then
-        buttonTimer = buttonTimerMax
-        manual.open = true
-        manual.buttons = {}
-        -- add 4 buttons
-        addButton(350, 400, 150, 200, "Diseases")
-        addButton(500, 400, 150, 200, "Ailments")
-        addButton(650, 400, 150, 200, "Treatments")
-    elseif manual.open then
-      --awdawd
-    end
-  end
-
-  -- decrement button Timer
-  if buttonTimer > 0 then
-    buttonTimer = buttonTimer - (1 *  dt)
-  end
-end
-
-function drawMenuGrid()
-  --if manual.open == false then
-    -- display manual button bottom right
-    --love.graphics.rectangle("line", 730, 530, 70, 70)
-    for _, button in ipairs(manual.buttons) do
-      love.graphics.rectangle("line", button.x, button.y, button.w, button.h)
-      love.graphics.printf(button.text, button.x, button.y, button.w)
-    end
-  --end
-
-  --[[if manual.open then
-    if manual.mainMenu then -- mode,  x,   y,   w,   h
-      love.graphics.rectangle("line", 350, 400, 150, 200)
-      love.graphics.rectangle("line", 500, 400, 150, 200)
-      love.graphics.rectangle("line", 650, 400, 150, 200)
-    end
-
-  end]]
---end
