@@ -3,6 +3,7 @@
 manual = {
   buttons = {},
   introRead = false,
+  pageNumberMax = 10,
   pageNumber = 1,
   dps = {
     { -- 1
@@ -122,6 +123,10 @@ function loadManual()
 end
 
 function updateManual(dt)
+  -- key presses left and right
+    -- manual.pageNumber = manual.pageNumber + 1 (cant go over pageNumberMax, and cant be less than 1)
+    -- manual.pageNumber = manual.pageNumber - 1
+
   for _, button in ipairs(manual.buttons) do
     if love.mouse.getX() > button.x and love.mouse.getX() < button.x + button.w and
     love.mouse.getY() > button.y and love.mouse.getY() < button.y + button.h and
