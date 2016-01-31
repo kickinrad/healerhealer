@@ -7,7 +7,8 @@ local inventory = {
     w = 350,
     h = 350
   },
-  buttons = {}
+  buttons = {},
+  lastItemAdded = ""
 }
 
 local bounds = {
@@ -74,8 +75,13 @@ function updateButtons(dt)
           button.backgroundDraw = true
           buttonTimer = buttonTimerMax
           treatPatient()
-        else
+        elseif table.getn(cauldron) ~= 5 then
           addToCauldron(button.alias)
+          inventory.lastItemAdded = button.text
+          button.backgroundDraw = true
+          buttonTimer = buttonTimerMax
+        else
+          print("Cauldron Full!")
           button.backgroundDraw = true
           buttonTimer = buttonTimerMax
         end
@@ -113,6 +119,9 @@ function drawInv()
     love.graphics.setFont(thin)
     love.graphics.printf(button.text, button.x+3, button.y+25, button.w-6, "center")
   end
+
+  -- draw last item added
+  love.graphics.printf(inventory.lastItemAdded, 148, 555, 70, "center")
 end
 
 return inventory
