@@ -57,8 +57,12 @@ dialogue = {
 	}
 }
 
-local patTimerMax = 0.5
+local patTimerMax = 1.0
 local patTimer = 0
+local msgTimerMax = 1.5
+local msgTimer = 0
+message = ""
+local msgDisplay = 0
 
 function getDialogue()
 	returnArray = {} -- return this table lmao
@@ -184,6 +188,13 @@ function updatePatient(dt)
   if patTimer > 0 then
 	 	patTimer = patTimer - (1 * dt)
 	end
+	if msgTimer <= 0 then
+		msgDisplay = 0
+	end
+	if msgTimer > 0 then
+		msgTimer = msgTimer - (1 * dt)
+		msgDisplay = 1
+	end
 end
 
 function drawPatient()
@@ -203,6 +214,7 @@ function drawPatient()
 	  love.graphics.setColor(patient.hair.r,patient.hair.g,patient.hair.b,255)
 	  love.graphics.draw(patient.hair.img, 580, 250, 0, 1, 1, 100, 100)
 	 end
+	 if (msgDisplay==1) then drawText(message) end
 end
 
 function drawAilments()
@@ -239,9 +251,9 @@ function getCures()
  if (patient.ailments.skin=="grey") then table.insert(cures, {"Aloe", "Cat's Paw", "Cat's Paw", "Dragonfly's Wing", "Fox's Tail", 2}) end
  if (patient.ailments.sweating==1) then table.insert(cures, {"Ash", "Bog Water", "Rosemary", "Salt", "Vinegar",  3}) end
  if (patient.ailments.bloodshot==1) then table.insert(cures, {"Mandrake Root", "Sage's Eye", "Toad's Tongue", "Wheat", "Witch's Hair", 4}) end
- if (patient.ailments.sunken==1) then table.insert(cures, {"Fox's Tail", "Quail Egg", "Vinegar", "Vinegar", "Wolf's Fang", 5}) end
+ if (patient.ailments.sunken==1) then table.insert(cures, {"Fox's Tail", "Quail Egg", "Vinegar", "Vinegar", "Wolf Fang", 5}) end
  if (patient.ailments.welts==1) then table.insert(cures, {"Crocodile Scales", "Frog", "Mandrake Root", "Newt Tongue", "Rat's Tail", 6}) end
- if (patient.ailments.spots==1) then table.insert(cures, {"Cat's Paw", "Dahlia", "Familiar's Blood", "Wolf's Fang", "Wolf's Fang", 7}) end
+ if (patient.ailments.spots==1) then table.insert(cures, {"Cat's Paw", "Dahlia", "Familiar's Blood", "Wolf Fang", "Wolf Fang", 7}) end
  return cures
 end
 
@@ -261,6 +273,8 @@ function cure(num)
 	if (num==5) then patient.ailments.sunken=0 end
 	if (num==6) then patient.ailments.welts=0 end
 	if (num==7) then patient.ailments.spots=0 end
+	message = "Your patient feels a sense of relief."
+	msgTimer = msgTimerMax
 	drawPatient()
 	drawAilments()
 	return checkIfCured()
@@ -271,6 +285,7 @@ function checkIfCured()
 		--patient is cured code here
 		print("CURED!!!!")
 		score = score+1
+		message = "Patient cured. Your next patient is approaching."
 		finished = 1
 		loadPatient(2)
 		patTimer = patTimerMax
@@ -285,4 +300,10 @@ function fixSkin()
 	patient.skin.r=168.8+38.5*patient.skin.k
 	patient.skin.g=122.5+32.1*patient.skin.k
 	patient.skin.b=96.7+26.3*patient.skin.k
+end
+
+function drawText(txt)
+	love.graphics.setColor(255,255,255,255)
+	love.graphics.setFont(big_gothic)
+  love.graphics.printf(txt, 380, 120, 380, "center")
 end
