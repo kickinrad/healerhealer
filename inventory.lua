@@ -31,12 +31,12 @@ function loadInv()
   -- first row:
   addIngredient(0, 0, "Frog", "fr") --fr
   addIngredient(70, 0, "Salt", "sa")--sa
-  addIngredient(140, 0, "Eyeball", "ey") --ey
+  addIngredient(140, 0, "Sage's Eye", "ey") --ey
   addIngredient(210, 0, "Flower", "fl") -- fl
   addIngredient(280, 0, "Wheat", "wh") -- wh
   -- second row:
   addIngredient(0, 70, "Olive Twig", "ot") -- ot
-  addIngredient(70, 70, "Goat Milk", "gm") -- gm -- change to Sow's Milk
+  addIngredient(70, 70, "Sow's Milk", "gm") -- gm
   addIngredient(140, 70, "Bog Water", "bw") -- bw
   addIngredient(210, 70, "Aloe", "al") -- al
   addIngredient(280, 70, "Witch's Hair", "wi") -- wi
@@ -50,15 +50,15 @@ function loadInv()
   addIngredient(0, 210, "Rosemary", "ro") --ro
   addIngredient(70, 210, "Rat's Tail", "rt") -- rt
   addIngredient(140, 210, "Ash", "as") -- as
-  -- add dove's wing
-  -- dragonfly's wing
+  addIngredient(210, 210, "Dove's Wing", "dw") -- dw
+  addIngredient(280, 210, "Dragonfly's Wing", "df") -- df
 
   -- fifth row:
-  -- add daisy
-  -- fox's tail
-  -- toad's tongue
-  -- cat's eye
-  -- Bath?
+  addIngredient(0, 280, "Daisy", "da") -- da
+  addIngredient(70, 280, "Fox's Tail", "ft") -- ft
+  addIngredient(140, 280, "Toad's Tongue", "tt") -- tt
+  addIngredient(210, 280, "Cat's Paw", "cp")-- cat's eye
+  addIngredient(280, 280, "Bees?", "bb") -- bb
 
   -- treatment buttons
   addIngredient(280, 530, "Treat", "")

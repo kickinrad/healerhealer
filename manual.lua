@@ -48,7 +48,7 @@ end
 
 function loadManual()
   manualImage = love.graphics.newImage("assets/book.png")
-  addButton(575, 380, 200, 255, "right") -- right page button
+  addButton(575, 380, 200, 260, "right") -- right page button
 end
 
 function updateManual(dt)
