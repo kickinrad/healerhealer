@@ -11,6 +11,7 @@ require "math"
 require "game"
 
 function love.load()
+  musicForest = love.audio.newSource("assets/sounds/forest.ogg", stream)
   rng = love.math.newRandomGenerator()
   rng:setSeed(os.time())
   score = 0
@@ -25,8 +26,13 @@ function love.load()
 end
 
 function love.update(dt)
+  if not musicForest:isPlaying() then
+    love.audio.play(musicForest)
+  end
+
   if love.keyboard.isDown("space") then
-    addToCauldron()
+    --addToCauldron()
+    -- call treat button
   end
 
   updateButtons(dt)

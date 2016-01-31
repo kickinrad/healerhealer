@@ -33,6 +33,11 @@ local function addIngredient(xPos, yPos, textName, nName)
 end
 
 function loadInv()
+  -- load sounds:
+  soundBubbling = love.audio.newSource("assets/sounds/bubbling.wav", static)
+  soundClick = love.audio.newSource("assets/sounds/click.wav", static)
+  soundKnock = love.audio.newSource("assets/sounds/knock.wav", static)
+
   -- first row:
   addIngredient(0, 0, "Frog", "fr") --fr
   addIngredient(70, 0, "Salt", "sa")--sa
@@ -76,17 +81,20 @@ function updateButtons(dt)
       love.mouse.getY() > button.y and love.mouse.getY() < button.y + button.h and
       love.mouse.isDown(1) and buttonTimer <= 0 then
         if button.text == "Treat" then -- if the player clicks Treat
+          love.audio.play(soundBubbling)
           button.backgroundDraw = true
           buttonTimer = buttonTimerMax
           inventory.lastItemAdded = ""
           treatPatient()
         elseif table.getn(cauldron) ~= 5 then
+          love.audio.play(soundClick)
           addToCauldron(button.text)
           inventory.lastItemAdded = button.text
 
           button.backgroundDraw = true
           buttonTimer = buttonTimerMax
         else
+          love.audio.play(soundKnock)
           print("Cauldron Full!")
           button.backgroundDraw = true
           buttonTimer = buttonTimerMax
