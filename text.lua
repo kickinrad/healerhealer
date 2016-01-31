@@ -9,18 +9,21 @@ dialogueBox = {
     backgroundDraw = false
 }
 
-patientSayings = {
+--[[patientSayings = {
   "Wowee, I am sick doc!",
   "Please fix my head, it hurts!",
   "I got eggs in my skin! Is there no cure? I tried everything!"
-}
+}--]]
+
+patientSayings = {}
 
 local buttonTimerMax = 0.2
 local buttonTimer = 0
 
---function loadSayings()
--- load all sayings from patient and store in patient sayings to be displayed
---end
+function loadSayings()
+ --load all sayings from patient and store in patient sayings to be displayed
+ patientSayings = getDialogue()
+end
 
 local i = 1
 
@@ -56,7 +59,7 @@ function drawDialogue()
   end
 
   love.graphics.setFont(big_gothic)
-  love.graphics.printf(patientSayings[i], 360, 5, 450)
+  love.graphics.printf(patientSayings[i], 360, 5, 440)
   love.graphics.setFont(thin)
   love.graphics.printf(i, 360, 75, 50)
   love.graphics.printf("/", 365, 75, 50)

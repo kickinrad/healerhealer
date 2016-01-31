@@ -17,6 +17,7 @@ function love.load()
   loadPatient(2)
   loadManual()
   --loadButtons()
+  loadSayings()
 end
 
 function love.update(dt)

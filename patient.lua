@@ -15,6 +15,44 @@ ailments = {
 	bloodshot=love.graphics.newImage("assets/character/bloodshot.png")
 }
 
+dialogue = {
+	grey = {
+		"I look like a skeleton!", -- 1
+		"I don't feel that great...", -- 2
+		"You ever watch Daredevil on Netflix? That shit rocks!", -- 3
+		"Yo! Google Dunk De La Mort, it's wild!", -- 4
+		"You ever watch X-Files? I feel like I have a pretty good chance of being casted.", -- 5
+		"I'm kinda like Elvis from Perfect Dark right now...", -- 6
+		"I got a 2 litre of Mountain Dew, you want some dawg?", -- 7
+		"I'm grey daba dee daba di", -- 8
+		"Beep boop bop, I am a robot!", -- 9
+		"This is the 10th message for the grey dialogue option." -- 10
+	},
+	redskin = {
+		"I got the red skin doc, lmao", -- 1
+		"Help me please.", -- 2
+		"Can you check out this mole on my back?", -- 3
+		"Go Cleveland!", -- 4
+		"I love that 70s Show!", -- 5
+		"This game was made in 48 hours, pretty cool, huh?", -- 6
+		"Kid Rock is one of my all time heroes.", -- 7
+		"This game is kinda like Theme Hospital, but it hurts more.", -- 8
+		"Lemme see that Grimoire!", -- 9
+		"This is the 10th message for the red skin dialogue option." -- 10
+	}
+}
+
+function getDialogue()
+	returnArray = {} -- return this table lmao
+
+	for dialogue, value in pairs(dialogue) do
+		rand = rng:random(1, table.getn(value)) -- random number from 1 - value.size
+		table.insert(returnArray, value[rand])
+	end
+	-- return array of dialogue
+	return returnArray
+end
+
 function loadPatient(difficulty)
 
 	for i=1, difficulty do
@@ -53,7 +91,7 @@ function loadPatient(difficulty)
   	end
   end
 
-  
+
   if(patient.ailments.skin=="red") then
   	patient.skin.r=163
 		patient.skin.g=92
@@ -107,7 +145,7 @@ function drawPatient()
   love.graphics.draw(patient.pants.img, 580, 250, 0, 1, 1, 100, 100)
   love.graphics.setColor(patient.shoes.r,patient.shoes.g,patient.shoes.b,255)
   love.graphics.draw(patient.shoes.img, 580, 250, 0, 1, 1, 100, 100)
-  
+
   love.graphics.setColor(patient.hair.r,patient.hair.g,patient.hair.b,255)
   love.graphics.draw(patient.hair.img, 580, 250, 0, 1, 1, 100, 100)
 end
@@ -153,13 +191,13 @@ end
 function cure(num)
 	print("trying to cure")
 	print("num:",num)
-	if (num==1 or num ==2) then 
-		patient.ailments.skin=nil 
+	if (num==1 or num ==2) then
+		patient.ailments.skin=nil
 		print("ayy")
 		fixSkin()
 	end
-	if (num==3) then 
-		patient.ailments.sweating=0 
+	if (num==3) then
+		patient.ailments.sweating=0
 		fixSkin()
 	end
 	if (num==4) then patient.ailments.bloodshot=0 end
