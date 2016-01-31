@@ -60,6 +60,9 @@ function love.draw()
   -- message draw
   drawMsg()
 
+  -- game draws:
+  drawRoundEnd()
+
   if debug then
     love.graphics.setColor(255, 0, 0, 255) -- set color to red
     love.graphics.print("X     Y", 5, 560)

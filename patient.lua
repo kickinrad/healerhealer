@@ -175,6 +175,8 @@ function loadPatient(difficulty)
 		patient.skin.g=98
 		patient.skin.b=98
 	end
+
+	loadSayings()
 end
 
 function updatePatient(dt)
@@ -272,13 +274,29 @@ function checkIfCured()
 		print("CURED!!!!")
 		score = score+1
 		finished = 1
-		loadPatient(2)
+		if score < 4 and score > 0 then -- if score is 1 - 4
+			rand = rng:random(1, score) + 1
+			loadPatient(rand)
+		else -- else difficulty is 2
+			loadPatient(2)
+		end
+		-- get dialogue now
+		--loadSayings()
 		setMsg("Patient has been cured!")
 		patTimer = patTimerMax
 
 		return 1
+	else
+
 	end
 	return 0
+end
+
+function killPatient()
+	if score > 0 then
+		score = score - 1
+	end
+	setMsg("Wrong treatment, doc!")
 end
 
 function fixSkin()

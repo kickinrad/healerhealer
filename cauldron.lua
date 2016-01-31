@@ -28,7 +28,9 @@ function treatPatient()
   end
 
   status = false
+  wasCured = false
   curesNeeded = getCures()
+
   for n=1, table.getn(curesNeeded) do
 	  for i=1,table.getn(curesNeeded[n])-1 do
 	    if curesNeeded[n][i] == cauldron[i] then
@@ -43,10 +45,13 @@ function treatPatient()
 	    --print("Treated symptom!!!")
 	    print(curesNeeded[n][1])
 	    cure(curesNeeded[n][table.getn(curesNeeded[n])])
-	  else
-	    --print("Symptom not treated")
+      wasCured = true
 	  end
 	end
+
+  if wasCured == false then
+    killPatient()
+  end
   cauldron = {} -- empty cauldron
 end
 
