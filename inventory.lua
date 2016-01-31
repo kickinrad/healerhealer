@@ -36,7 +36,7 @@ function loadInv()
   addIngredient(280, 0, "Wheat", "wh") -- wh
   -- second row:
   addIngredient(0, 70, "Olive Twig", "ot") -- ot
-  addIngredient(70, 70, "Goat Milk", "gm") -- gm
+  addIngredient(70, 70, "Goat Milk", "gm") -- gm -- change to Sow's Milk
   addIngredient(140, 70, "Bog Water", "bw") -- bw
   addIngredient(210, 70, "Aloe", "al") -- al
   addIngredient(280, 70, "Witch's Hair", "wi") -- wi
@@ -50,6 +50,15 @@ function loadInv()
   addIngredient(0, 210, "Rosemary", "ro") --ro
   addIngredient(70, 210, "Rat's Tail", "rt") -- rt
   addIngredient(140, 210, "Ash", "as") -- as
+  -- add dove's wing
+  -- dragonfly's wing
+
+  -- fifth row:
+  -- add daisy
+  -- fox's tail
+  -- toad's tongue
+  -- cat's eye
+  -- Bath?
 
   -- treatment buttons
   addIngredient(280, 530, "Treat", "")
