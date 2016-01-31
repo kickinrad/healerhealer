@@ -72,6 +72,7 @@ function loadInv()
 
   -- treatment buttons
   addIngredient(280, 530, "Treat", "")
+  addIngredient(0, 530, "Empty", "")
 end
 
 function updateButtons(dt)
@@ -86,6 +87,12 @@ function updateButtons(dt)
           buttonTimer = buttonTimerMax
           inventory.lastItemAdded = ""
           treatPatient()
+        elseif button.text == "Empty" then
+          love.audio.play(soundClick)
+          button.backgroundDraw = true
+          buttonTimer = buttonTimerMax
+          inventory.lastItemAdded = ""
+          cauldron = {}
         elseif table.getn(cauldron) ~= 5 then
           love.audio.play(soundClick)
           addToCauldron(button.text)

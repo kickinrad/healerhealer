@@ -29,7 +29,7 @@ dialogue = {
 		"My blood is boiling. I can scarcely see through this fierce red.", -- 2
 		"With my skin as this, what sets me apart from unholy wretches below?", -- 3
 		"My veins are fire. Please, healer, qwell this burning...", -- 4
-		"I have never seeemed so... flustered. Dont flatter yourself, healer. It is not you." -- 5
+		"I have never seeemed so... flustered. Do not flatter yourself, healer. It is not you." -- 5
 	},
 	sweating = {
 		"I am soaked head to toe. My feverish fits grow graver by the day.", -- 1
@@ -41,19 +41,25 @@ dialogue = {
 	bloodshot = {
 		"I have forsaken sleep for days. These bleeding eyes simply cannot close.", -- 1
 		"I cannot bear the site of you, healer. I swear it be my eyes speeking there, not I.", -- 2
-		"All my sight is bathed in red. Does this shade not haunt your vision too, healer?" -- 3
+		"All my sight is bathed in red. Does this shade not haunt your vision too, healer?", -- 3
+		"For want of an ointment these damn eyes of my glow red as embers. Can you stop this burning, healer?", -- 4
+		"These sight-seers of mine are something beastly." -- 5
 	},
 	sunken = {
 		"I have seen portents, healer, terrible portents, etched into my eyes...", -- 1
 		"Sleep is death, healer.", -- 2
-		"These eyes have beared witness to wickedness, my healer. True wickedness." -- 3
+		"These eyes have borne witness to wickedness, my healer. True wickedness.", -- 3
+		"This ghast-eyed spectre I behold in the looking glass surely cannot be I.",
+		"The spirits claw at me, healer. Can you not see it in my eyes?"
 	},
 	welts = {
 		"Can one ever leave a blemished fool such as I?", -- 1
-		"What a twisted creature I have become. Bumps and boils as some sort of ogre." -- 2
+		"What a twisted creature I have become. Bumps and boils as some sort of ogre.", -- 2
+		"The Black Death took my grandmother and my grandfather. Has it come for me too?"
 	},
 	spots = {
-		"I can see constellations in my skin." -- 1
+		"I can see constellations in my skin.", -- 1
+		"My skin is aflame, healer. I scratch and scratch, as though to rend it from my bones."
 	}
 }
 
@@ -296,7 +302,7 @@ function killPatient()
 	if score > 0 then
 		score = score - 1
 	end
-	setMsg("Wrong treatment, doc!")
+	setMsg("    Wrong treatment!")
 end
 
 function fixSkin()

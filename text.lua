@@ -1,5 +1,7 @@
 big_gothic = love.graphics.newFont("gothic_pixel.ttf", 30) -- *keep these*
+titleFont = love.graphics.newFont("gothic_pixel.ttf", 86) -- *keep these*
 thin = love.graphics.newFont("thintel.ttf", 16)
+blokk = love.graphics.newFont("BLOKKRegular.ttf", 10)
 
 dialogueBox = {
     x = 350,

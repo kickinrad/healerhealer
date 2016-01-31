@@ -1,6 +1,6 @@
 -- Global Game Jam 2016
 
-debug = true
+debug = false
 
 require "text"
 require "manual"
@@ -10,8 +10,20 @@ require "cauldron"
 require "math"
 require "game"
 
+gameStart = false
+
+startButton = {
+  x = 315,
+  y = 215,
+  w = 175,
+  h = 50,
+  text = "Start",
+  drawBackground = false
+}
+
 function love.load()
   musicForest = love.audio.newSource("assets/sounds/forest.ogg", stream)
+  soundBell = love.audio.newSource("assets/sounds/belltoll.wav", static)
   rng = love.math.newRandomGenerator()
   rng:setSeed(os.time())
   score = 0
@@ -35,39 +47,74 @@ function love.update(dt)
     -- call treat button
   end
 
-  updateButtons(dt)
-  updateDialogue(dt)
   updateManual(dt)
-  updatePatient(dt)
-  updateGame(dt)
+
+  if gameStart then
+    updateButtons(dt)
+    updateDialogue(dt)
+
+    updatePatient(dt)
+    updateGame(dt)
+  end
+
+  if gameStart == false then
+    -- button clickable
+    if love.mouse.getX() > startButton.x and love.mouse.getX() < startButton.x + startButton.w and
+      love.mouse.getY() > startButton.y and love.mouse.getY() < startButton.y + startButton.h and
+      love.mouse.isDown(1) then
+        gameStart = true
+        setMsg("              Day 1")
+        love.audio.play(soundBell)
+    end
+  end
+
 end
 
 function love.draw()
-  love.graphics.line(350, 0, 350, 600) -- split patient/inventory sections
-  love.graphics.rectangle("line", inventory.box.x, inventory.box.y, inventory.box.w, inventory.box.h) -- inventory box
-  love.graphics.rectangle("line", 350, 0, 450, 100) -- dialogue box
+  --love.graphics.line(350, 0, 350, 600) -- split patient/inventory sections
+  --love.graphics.rectangle("line", inventory.box.x, inventory.box.y, inventory.box.w, inventory.box.h) -- inventory box
+  --love.graphics.rectangle("line", 350, 0, 450, 100) -- dialogue box
 
-  -- inventory draws:
-  drawInv() -- draws button text
-  drawGrid() -- draws button grid
+  if gameStart then
+    -- inventory draws:
+    drawInv() -- draws button text
+    drawGrid() -- draws button grid
 
-  -- dialogue draws:
-  drawDialogue()
+    -- dialogue draws:
+    drawDialogue()
 
-  -- patient draws:
-  drawPatient()
+    -- patient draws:
+    drawPatient()
+  end
+    -- manual draws:
+    drawManual()
 
-  -- manual draws:
-  drawManual()
+  if gameStart then
+    -- cauldron draws:
+    drawCauldron()
 
-  -- cauldron draws:
-  drawCauldron()
+    -- message draw
+    drawMsg()
 
-  -- message draw
-  drawMsg()
+    -- game draws:
+    drawRoundEnd()
+  end
 
-  -- game draws:
-  drawRoundEnd()
+  if gameStart == false then
+    -- draw button
+    if love.mouse.getX() > startButton.x and love.mouse.getX() < startButton.x + startButton.w and
+      love.mouse.getY() > startButton.y and love.mouse.getY() < startButton.y + startButton.h then
+        love.graphics.setColor(255, 0, 0, 150)
+        love.graphics.rectangle("fill", startButton.x, startButton.y, startButton.w, startButton.h)
+        love.graphics.setColor(255, 255, 255, 255)
+        love.graphics.rectangle("line", startButton.x + 5, startButton.y + 5, startButton.w - 10, startButton.h - 10)
+    end
+    love.graphics.setFont(titleFont)
+    love.graphics.printf("Healer, Healer", 200, 100, 500)
+    love.graphics.setFont(big_gothic)
+    love.graphics.printf(startButton.text, 377, 225, 200)
+    love.graphics.setFont(thin)
+  end
 
   if debug then
     love.graphics.setColor(255, 0, 0, 255) -- set color to red

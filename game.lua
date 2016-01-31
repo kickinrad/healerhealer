@@ -37,11 +37,13 @@ function updateGame(dt)
 	if roundTimer <= 0 and roundEnd == false and gameover == false then
 		roundEnd = true
 		roundEndTimer = roundEndTimerMax
+		love.audio.play(soundBell)
+		musicForest:setVolume(.1)
 		loadPatient(1)
 		days = days + 1
 		saved = score
 		score = 0
-		deaths = rng:random(1,10)
+		deaths = rng:random(1,15)
 
 		if deaths > saved then
 			deaths = deaths - saved
@@ -56,6 +58,7 @@ function updateGame(dt)
 	if roundEndTimer <= 0 and roundEnd == true and gameover == false then
 		roundEnd = false
 		roundTimer = roundTimerMax
+		musicForest:setVolume(.5)
 	end
 
 	if population <= 0 then

@@ -11,6 +11,7 @@ function loadCauldron()
   caulBack = love.graphics.newImage("assets/character/cauldron_back.png")
   logs = love.graphics.newImage("assets/character/logs.png")
   fire = love.graphics.newImage("assets/character/fire.png")
+  soundGrunt = love.audio.newSource("assets/sounds/grunt.wav", static)
 end
 
 function addToCauldron(x)
@@ -42,7 +43,7 @@ function treatPatient()
 	  end
 
 	  if status then
-	    --print("Treated symptom!!!")
+
 	    print(curesNeeded[n][1])
 	    cure(curesNeeded[n][table.getn(curesNeeded[n])])
       wasCured = true
@@ -50,6 +51,7 @@ function treatPatient()
 	end
 
   if wasCured == false then
+    love.audio.play(soundGrunt)
     killPatient()
   end
   cauldron = {} -- empty cauldron
@@ -61,6 +63,12 @@ function drawCauldron()
   love.graphics.draw(caulFront, 225, 500, 0, 1, 1, 100, 100)
   love.graphics.draw(fire, 225, 500, 0, 1, 1, 100, 100)
   love.graphics.draw(caulBack, 225, 500, 0, 1, 1, 100, 100)
+
+  if table.getn(cauldron) >= 5 then
+    love.graphics.setFont(big_gothic)
+    love.graphics.printf("Cauldron is full!", 100, 360, 200)
+    love.graphics.setFont(thin)
+  end
 end
 
 function testDrawCauldron(asd)
