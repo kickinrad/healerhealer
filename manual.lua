@@ -160,6 +160,14 @@ end
 function loadManual()
   manualImage = love.graphics.newImage("assets/book.png")
   addButton(575, 345, 200, 255, "right") -- right page button
+
+  greySkinI = love.graphics.newImage("assets/gImages/greyboy.png")
+  redSkinI = love.graphics.newImage("assets/gImages/redboy.png")
+  sweatI = love.graphics.newImage("assets/gImages/wet.png")
+  bloodshotI = love.graphics.newImage("assets/gImages/bs.png")
+  sunkenI = love.graphics.newImage("assets/gImages/sink.png")
+  weltsI = love.graphics.newImage("assets/gImages/weltboy.png")
+  spotsI = love.graphics.newImage("assets/gImages/spotboy.png")
 end
 
 function updateManual(dt)
@@ -252,6 +260,14 @@ end
 function drawManual()
   love.graphics.setColor(255, 255, 255, 255)
   love.graphics.draw(manualImage, 451, 400, 0, 1, 1, 100, 100)
+
+  if manual.pageNumber == 4 then love.graphics.draw(greySkinI, 680, 480, 0, 1, 1, 100, 100) end
+  if manual.pageNumber == 5 then love.graphics.draw(redSkinI, 680, 480, 0, 1, 1, 100, 100) end
+  if manual.pageNumber == 6 then love.graphics.draw(sweatI, 680, 480, 0, 1, 1, 100, 100) end
+  if manual.pageNumber == 7 then love.graphics.draw(bloodshotI, 680, 480, 0, 1, 1, 100, 100) end
+  if manual.pageNumber == 8 then love.graphics.draw(sunkenI, 680, 480, 0, 1, 1, 100, 100) end
+  if manual.pageNumber == 9 then love.graphics.draw(weltsI, 680, 480, 0, 1, 1, 100, 100) end
+  if manual.pageNumber == 10 then love.graphics.draw(spotsI, 680, 480, 0, 1, 1, 100, 100) end
 
   for _, button in ipairs(manual.buttons) do
     if button.backgroundDraw then
