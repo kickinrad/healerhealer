@@ -17,33 +17,33 @@ ailments = {
 
 dialogue = {
 	grey = {
-		"I look like a skeleton!", -- 1
-		"I don't feel that great...", -- 2
-		"You ever watch Daredevil on Netflix? That shit rocks!", -- 3
-		"Yo! Google Dunk De La Mort, it's wild!", -- 4
-		"You ever watch X-Files? I feel like I have a pretty good chance of being casted.", -- 5
-		"I'm kinda like Elvis from Perfect Dark right now...", -- 6
-		"I got a 2 litre of Mountain Dew, you want some dawg?", -- 7
-		"I'm grey daba dee daba di", -- 8
-		"Beep boop bop, I am a robot!", -- 9
-		"This is the 10th message for the grey dialogue option." -- 10
+		"My skin is grey as ash, and my hear seems black as soot.", -- 1
+		"The vibrance has fled from my bones! Not a cheer in sight.", -- 2
+		"Dear healer, it seems my skin is as bleak as I.", -- 3
+		"Are I not a sad sight, brother? This dull flesh dulls yet its owners heart.", -- 4
+		"What a dreadful shade. Wrought no doubt by a spirit as wretched as its taste in colors.", -- 5
+		"What a horrible night to have a curse." -- 6
 	},
 	redskin = {
-		"I got the red skin doc, lmao", -- 1
-		"Help me please.", -- 2
-		"Can you check out this mole on my back?", -- 3
-		"Go Cleveland!", -- 4
-		"I love that 70s Show!", -- 5
-		"This game was made in 48 hours, pretty cool, huh?", -- 6
-		"Kid Rock is one of my all time heroes.", -- 7
-		"This game is kinda like Theme Hospital, but it hurts more.", -- 8
-		"Lemme see that Grimoire!", -- 9
-		"This is the 10th message for the red skin dialogue option." -- 10
+		"Make haste, healer. My time is limited and my temper is low.", -- 1
+		"My blood is boiling. I can scarcely see through this fierce red.", -- 2
+		"With my skin as this, what sets me apart from unholy wretches below?", -- 3
+		"My veins are fire. Please, healer, qwell this burning...", -- 4
+		"I have never seeemed so... flustered. Dont flatter yourself, healer. It is not you." -- 5
+	},
+	sweating = {
+		"I am soaked head to toe. My feverish fits grow graver by the day.", -- 1
+		"God, what a wreck am I. Perhaps I am sweating out these vile spirits.", -- 2
+		"Please, a drop of water, healer... I am so parched.", -- 3
+		"My haze is frienzied, brother... Anything...Anything for respite from the nightmares...", -- 4
+		"Please, a lasting care, healer. I have drenched all of my good attire." -- 5
 	}
 }
 
 function getDialogue()
 	returnArray = {} -- return this table lmao
+
+-- change to if/else tree for later when adding patient ailment checks
 
 	for dialogue, value in pairs(dialogue) do
 		rand = rng:random(1, table.getn(value)) -- random number from 1 - value.size
