@@ -14,7 +14,7 @@ function love.load()
   rng:setSeed(os.time())
 
   loadInv() -- load's inventory.buttons with names and positons
-  loadPatient(1)
+  loadPatient(2)
   loadManual()
   --loadButtons()
 end
