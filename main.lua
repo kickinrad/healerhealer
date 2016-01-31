@@ -12,9 +12,11 @@ require "math"
 function love.load()
   rng = love.math.newRandomGenerator()
   rng:setSeed(os.time())
+  score = 0
+  finished = 0
 
   loadInv() -- load's inventory.buttons with names and positons
-  loadPatient(2)
+  loadPatient(1)
   loadManual()
   --loadButtons()
   loadSayings()
@@ -28,6 +30,7 @@ function love.update(dt)
   updateButtons(dt)
   updateDialogue(dt)
   updateManual(dt)
+  updatePatient(dt)
 end
 
 function love.draw()
@@ -55,6 +58,7 @@ function love.draw()
     love.graphics.print(tostring(love.mouse.getX()), 5, 575) -- mouse x coords
     love.graphics.print(tostring(love.mouse.getY()), 30, 575) -- mouse y coords
     love.graphics.print(tostring(love.timer.getFPS()), 5, 5) -- fps
+    love.graphics.print(score, 20,5)
     testDrawCauldron() -- outputs array of ingredient aliases
     love.graphics.setColor(255, 255, 255, 255) -- set color back to white
   end

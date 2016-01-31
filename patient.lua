@@ -40,6 +40,9 @@ dialogue = {
 	}
 }
 
+local patTimerMax = 0.5
+local patTimer = 0
+
 function getDialogue()
 	returnArray = {} -- return this table lmao
 
@@ -56,7 +59,7 @@ end
 function loadPatient(difficulty)
 
 	for i=1, difficulty do
-  	print("test")
+  	--print("test")
   	done = 0
   	while (done==0) do
 	  	rand = rng:random(1,7)
@@ -133,21 +136,32 @@ function loadPatient(difficulty)
 	end
 end
 
+function updatePatient(dt)
+	if patTimer <=0 then
+	 	finished = 0
+  end
+  if patTimer > 0 then
+	 	patTimer = patTimer - (1 * dt)
+	end
+end
+
 function drawPatient()
-  love.graphics.setColor(patient.skin.r,patient.skin.g,patient.skin.b,255)
-  love.graphics.draw(patient.skin.img, 580, 250, 0, 1, 1, 100, 100)
+	if (finished==0) then
+	  love.graphics.setColor(patient.skin.r,patient.skin.g,patient.skin.b,255)
+	  love.graphics.draw(patient.skin.img, 580, 250, 0, 1, 1, 100, 100)
 
-  drawAilments()
+	  drawAilments()
 
-  love.graphics.setColor(patient.shirt.r,patient.shirt.g,patient.shirt.b,255)
-  love.graphics.draw(patient.shirt.img, 580, 250, 0, 1, 1, 100, 100)
-  love.graphics.setColor(patient.pants.r,patient.pants.g,patient.pants.b,255)
-  love.graphics.draw(patient.pants.img, 580, 250, 0, 1, 1, 100, 100)
-  love.graphics.setColor(patient.shoes.r,patient.shoes.g,patient.shoes.b,255)
-  love.graphics.draw(patient.shoes.img, 580, 250, 0, 1, 1, 100, 100)
+	  love.graphics.setColor(patient.shirt.r,patient.shirt.g,patient.shirt.b,255)
+	  love.graphics.draw(patient.shirt.img, 580, 250, 0, 1, 1, 100, 100)
+	  love.graphics.setColor(patient.pants.r,patient.pants.g,patient.pants.b,255)
+	  love.graphics.draw(patient.pants.img, 580, 250, 0, 1, 1, 100, 100)
+	  love.graphics.setColor(patient.shoes.r,patient.shoes.g,patient.shoes.b,255)
+	  love.graphics.draw(patient.shoes.img, 580, 250, 0, 1, 1, 100, 100)
 
-  love.graphics.setColor(patient.hair.r,patient.hair.g,patient.hair.b,255)
-  love.graphics.draw(patient.hair.img, 580, 250, 0, 1, 1, 100, 100)
+	  love.graphics.setColor(patient.hair.r,patient.hair.g,patient.hair.b,255)
+	  love.graphics.draw(patient.hair.img, 580, 250, 0, 1, 1, 100, 100)
+	 end
 end
 
 function drawAilments()
@@ -174,12 +188,14 @@ function drawAilments()
   love.graphics.setColor(patient.eyes.r,patient.eyes.g,patient.eyes.b,255)
   love.graphics.draw(patient.eyes.img, 580, 250, 0, 1, 1, 100, 100)
 	end
+
+
 end
 
 function getCures()
  cures = {}
  if (patient.ailments.skin=="red") then table.insert(cures, {"ey", "fr", "sa", 1}) end
- if (patient.ailments.skin=="grey") then table.insert(cures, {"fl", "ot", "wh", 2}) end
+ if (patient.ailments.skin=="grey") then table.insert(cures, {"al", "cp", "cp", "df", "ft", 2}) end
  if (patient.ailments.sweating==1) then table.insert(cures, {"al", "bw", "gm", 3}) end
  if (patient.ailments.bloodshot==1) then table.insert(cures, {"cs", "nt", "wi", 4}) end
  if (patient.ailments.sunken==1) then table.insert(cures, {"qe", "vi", "wf", 5}) end
@@ -189,11 +205,11 @@ function getCures()
 end
 
 function cure(num)
-	print("trying to cure")
-	print("num:",num)
+	--print("trying to cure")
+	--print("num:",num)
 	if (num==1 or num ==2) then
 		patient.ailments.skin=nil
-		print("ayy")
+		--print("ayy")
 		fixSkin()
 	end
 	if (num==3) then
@@ -210,8 +226,14 @@ function cure(num)
 end
 
 function checkIfCured()
-	if (patient.ailments.skin==nil and patient.ailments.sweating and patient.ailments.bloodshot and patient.ailments.sunken and patient.ailments.welts and patient.ailments.spots) then
+	if (patient.ailments.skin==nil and patient.ailments.sweating==0 and patient.ailments.bloodshot==0 and patient.ailments.sunken==0 and patient.ailments.welts==0 and patient.ailments.spots==0) then
 		--patient is cured code here
+		print("CURED!!!!")
+		score = score+1
+		finished = 1
+		loadPatient(2)
+		patTimer = patTimerMax
+
 		return 1
 	end
 	return 0
