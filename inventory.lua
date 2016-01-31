@@ -94,7 +94,7 @@ function drawGrid()
 end
 
 function drawInv()
-  for i, button in ipairs(inventory.buttons) do
+  for _, button in ipairs(inventory.buttons) do
     if button.backgroundDraw then
       love.graphics.setColor(255, 0, 0, 150)
       love.graphics.rectangle("fill", button.x, button.y, button.w, button.h)

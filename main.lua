@@ -15,6 +15,7 @@ function love.load()
 
   loadInv() -- load's inventory.buttons with names and positons
   loadPatient(1)
+  loadManual()
   --loadButtons()
 end
 
@@ -25,22 +26,26 @@ function love.update(dt)
 
   updateButtons(dt)
   updateDialogue(dt)
-  --updateManual(dt)
+  updateManual(dt)
 end
 
 function love.draw()
   love.graphics.line(350, 0, 350, 600) -- split patient/inventory sections
   love.graphics.rectangle("line", inventory.box.x, inventory.box.y, inventory.box.w, inventory.box.h) -- inventory box
   love.graphics.rectangle("line", 350, 0, 450, 100) -- dialogue box
-  love.graphics.rectangle("line", 350, 400, 450, 200) -- reference manual box
 
   -- inventory draws:
   drawInv() -- draws button text
   drawGrid() -- draws button grid
-  --drawMenuGrid() -- draws menu grid
+
   -- dialogue draws:
   drawDialogue()
+
+  -- patient draws:
   drawPatient()
+
+  -- manual draws:
+  drawManual()
 
   if debug then
     love.graphics.setColor(255, 0, 0, 255) -- set color to red
