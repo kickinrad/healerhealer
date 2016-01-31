@@ -48,7 +48,7 @@ end
 
 function loadManual()
   manualImage = love.graphics.newImage("assets/book.png")
-  addButton(575, 380, 200, 260, "right") -- right page button
+  addButton(575, 345, 200, 255, "right") -- right page button
 end
 
 function updateManual(dt)
@@ -65,14 +65,14 @@ function updateManual(dt)
       buttonTimer = buttonTimerMax
       manual.buttons = {}
       if manual.pageNumber == 1 then
-        addButton(575, 380, 200, 255, "right") -- right page button
+        addButton(575, 345, 200, 255, "right") -- right page button
       elseif manual.pageNumber == 2 then
-        addButton(575, 380, 200, 255, "right") -- right page button
-        addButton(375, 380, 200, 255, "left") -- left page button
+        addButton(575, 345, 200, 255, "right") -- right page button
+        addButton(375, 345, 200, 255, "left") -- left page button
       elseif manual.pageNumber == 3 then -- table of contents
         -- add a ton of buttons
-        addButton(730, 380, 40, 255, "right") -- right page button
-        addButton(375, 380, 35, 255, "left") -- left page button
+        addButton(730, 345, 40, 255, "right") -- right page button
+        addButton(375, 345, 35, 255, "left") -- left page button
         addButton(410, 444, 135, 10, "grey") -- grey skin 22 difference in pixels on the y axis
         addButton(410, 466, 135, 10, "redskin") -- red skin
         addButton(410, 488, 135, 10, "sweat") -- sweating
@@ -80,6 +80,8 @@ function updateManual(dt)
         addButton(410, 532, 135, 10, "sunken") -- sunken eyes
         addButton(410, 554, 135, 10, "welts") -- welts
         addButton(410, 576, 135, 10, "redspots") -- red spots
+      elseif manual.pageNumber == 4 then
+
       end
     end
 
@@ -99,11 +101,11 @@ end
 
 function drawManual()
   love.graphics.setColor(255, 255, 255, 255)
-  love.graphics.draw(manualImage, 453, 400, 0, 1, 1, 100, 100)
+  love.graphics.draw(manualImage, 451, 400, 0, 1, 1, 100, 100)
 
   for _, button in ipairs(manual.buttons) do
     if button.backgroundDraw then
-      love.graphics.setColor(0, 0, 0, 10) -- light grey
+      love.graphics.setColor(0, 0, 0, 15) -- light grey
       love.graphics.rectangle("fill", button.x, button.y, button.w, button.h)
     end
   end

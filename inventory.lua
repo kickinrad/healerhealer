@@ -32,7 +32,7 @@ function loadInv()
   addIngredient(0, 0, "Frog", "fr") --fr
   addIngredient(70, 0, "Salt", "sa")--sa
   addIngredient(140, 0, "Sage's Eye", "ey") --ey
-  addIngredient(210, 0, "Flower", "fl") -- fl
+  addIngredient(210, 0, "Dahlia", "fl") -- fl
   addIngredient(280, 0, "Wheat", "wh") -- wh
   -- second row:
   addIngredient(0, 70, "Olive Twig", "ot") -- ot
@@ -54,11 +54,11 @@ function loadInv()
   addIngredient(280, 210, "Dragonfly's Wing", "df") -- df
 
   -- fifth row:
-  addIngredient(0, 280, "Daisy", "da") -- da
+  addIngredient(0, 280, "Mandrake Root", "mr") -- da
   addIngredient(70, 280, "Fox's Tail", "ft") -- ft
   addIngredient(140, 280, "Toad's Tongue", "tt") -- tt
   addIngredient(210, 280, "Cat's Paw", "cp")-- cat's eye
-  addIngredient(280, 280, "Bees?", "bb") -- bb
+  addIngredient(280, 280, "Familiar's Blood", "fb") -- bb
 
   -- treatment buttons
   addIngredient(280, 530, "Treat", "")
