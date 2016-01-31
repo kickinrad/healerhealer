@@ -74,6 +74,7 @@ function updateButtons(dt)
         if button.text == "Treat" then -- if the player clicks Treat
           button.backgroundDraw = true
           buttonTimer = buttonTimerMax
+          inventory.lastItemAdded = ""
           treatPatient()
         elseif table.getn(cauldron) ~= 5 then
           addToCauldron(button.alias)
