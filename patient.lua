@@ -1,5 +1,5 @@
 patient = {
-	ailments={skin=nil, sweating=1, bloodshot=1, sunken=1, welts=0, spots=1},
+	ailments={skin=nil, sweating=0, bloodshot=0, sunken=0, welts=0, spots=0},
 	skin={k=nil, r=nil, g=nil, b=nil, img=love.graphics.newImage("assets/character/skin.png")},
 	shirt={r=nil, g=nil, b=nil, img=love.graphics.newImage("assets/character/shirt.png")},
 	hair={r=nil, g=nil, b=nil, img=love.graphics.newImage("assets/character/hair.png")},
@@ -136,4 +136,16 @@ function drawAilments()
   love.graphics.setColor(patient.eyes.r,patient.eyes.g,patient.eyes.b,255)
   love.graphics.draw(patient.eyes.img, 580, 250, 0, 1, 1, 100, 100)
 	end
+end
+
+function getCures()
+ cures = {}
+ if (patient.ailments.skin=="red") then table.insert(cures, {"fr", "sa", "ey"}) end
+ if (patient.ailments.skin=="grey") then table.insert(cures, {"fl", "wh", "ot"}) end
+ if (patient.ailments.sweating==1) then table.insert(cures, {"gm", "bw", "al"}) end
+ if (patient.ailments.bloodshot==1) then table.insert(cures, {"wi", "nt", "cs"}) end
+ if (patient.ailments.sunken==1) then table.insert(cures, {"vi", "wf", "qe"}) end
+ if (patient.ailments.welts==1) then table.insert(cures, {"ro", "rt", "as"}) end
+ if (patient.ailments.spots==1) then table.insert(cures, {"al", "ot", "fl"}) end
+ return cures
 end
