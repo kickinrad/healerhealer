@@ -7,7 +7,7 @@ deaths = 0
 days = 0
 
 roundTimerMax = 120
-roundTimer = 120 -- should 120
+roundTimer = 120 -- should be 120
 roundEnd = false
 
 roundEndTimerMax = 7
@@ -91,8 +91,8 @@ end
 
 function drawRoundEnd()
 	if roundEnd then
-		love.mouse.setVisible(false)
-		love.mouse.setPosition(0,0)
+		--love.mouse.setVisible(false)
+		--love.mouse.setPosition(0,0)
 		----
 		love.graphics.setColor(0, 0, 0, 255)
 		love.graphics.rectangle("fill", 200, 100, 400, 270)

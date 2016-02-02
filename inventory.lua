@@ -80,7 +80,7 @@ function updateButtons(dt)
   for _, button in ipairs(inventory.buttons) do
     if love.mouse.getX() > button.x and love.mouse.getX() < button.x + button.w and
       love.mouse.getY() > button.y and love.mouse.getY() < button.y + button.h and
-      love.mouse.isDown(1) and buttonTimer <= 0 then
+      love.mouse.isDown(1) and buttonTimer <= 0 and roundEnd == false then
         if button.text == "Treat" then -- if the player clicks Treat
           love.audio.play(soundBubbling)
           button.backgroundDraw = true
@@ -115,6 +115,11 @@ function updateButtons(dt)
   -- decrement button Timer
   if buttonTimer > 0 then
     buttonTimer = buttonTimer - (1 *  dt)
+  end
+
+  if roundEnd then
+    cauldron = {}
+    inventory.lastItemAdded = ""
   end
 
 end
