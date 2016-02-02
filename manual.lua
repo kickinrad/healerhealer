@@ -29,7 +29,7 @@ manual = {
     { -- 3 table of contents
       left = {
         title = "Table of Contents\nS",
-        description = "\n\t    ymptoms:\n\n\t- Greyed Skin\n\n\t- Red Skin\n\n\t- Sweating\n\n\t- Bloodshot Eyes\n\n\t- Sunken Eyes\n\n\t- Welts\n\n\t- Pox\n" -- coughing, shivers, lost hair, rashes, gaunt features
+        description = "\n\t    ymptoms:\n\n\t- Greyed Skin\n\n\t- Hot Blood\n\n\t- Sweating\n\n\t- Bloodshot Eyes\n\n\t- Sunken Eyes\n\n\t- Welts\n\n\t- Pox\n" -- coughing, shivers, lost hair, rashes, gaunt features
       },
       right = {
         title = "\n\nT",
@@ -48,7 +48,7 @@ manual = {
     },
     { -- 5
       left = {
-        title = "Red Skin",
+        title = "Hot Blood",
         description = "\n\tCured by: Balm of Soothing" -- coughing, shivers, lost hair, rashes, gaunt features
       },
       right = {
@@ -241,7 +241,7 @@ function updateManual(dt)
 
         -- symptoms
         addButton(410, 444, 135, 10, "grey") -- grey skin 22 difference in pixels on the y axis
-        addButton(410, 466, 135, 10, "redskin") -- red skin
+        addButton(410, 466, 135, 10, "redskin") -- hot blood... previously known as red skin
         addButton(410, 488, 135, 10, "sweat") -- sweating
         addButton(410, 510, 135, 10, "bloodshot") -- bloodshot eyes
         addButton(410, 532, 135, 10, "sunken") -- sunken eyes
