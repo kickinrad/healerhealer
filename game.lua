@@ -7,7 +7,7 @@ deaths = 0
 days = 0
 
 roundTimerMax = 120
-roundTimer = 2 -- should be 120
+roundTimer = 120 -- should be 120
 roundEnd = false
 
 roundEndTimerMax = 7
