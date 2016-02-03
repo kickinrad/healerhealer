@@ -7,7 +7,7 @@ deaths = 0
 days = 0
 
 roundTimerMax = 120
-roundTimer = 120 -- should be 120
+roundTimer = 2 -- should be 120
 roundEnd = false
 
 roundEndTimerMax = 7
@@ -101,12 +101,12 @@ function drawRoundEnd()
 		love.graphics.setFont(big_gothic)
 		love.graphics.printf("End of day...",  340, 110, 300)
 		love.graphics.printf(tostring(saved), 500, 150, 200)
-		love.graphics.printf("People Saved.....", 250, 150, 200)
-		love.graphics.printf("Population..........", 250, 200, 200)
+		love.graphics.printf("People Saved...................", 250, 150, 300)
+		love.graphics.printf("Population........................", 250, 200, 300)
 		love.graphics.printf(tostring(population), 500, 200, 200)
-		love.graphics.printf("Deaths.................", 250, 250, 200)
+		love.graphics.printf("Deaths................................", 250, 250, 300)
 		love.graphics.printf(tostring(deaths), 500, 250, 200)
-		love.graphics.printf("Day......................", 250, 300, 200)
+		love.graphics.printf("Day...................................", 250, 300, 300)
 		love.graphics.printf(tostring(days), 500, 300, 200)
 		love.graphics.setFont(thin)
 	elseif roundEnd == false then
